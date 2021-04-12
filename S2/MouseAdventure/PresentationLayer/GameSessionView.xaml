@@ -1,0 +1,161 @@
+﻿<Window x:Class="MouseAdventure.PresentationLayer.GameSessionView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:MouseAdventure.PresentationLayer"
+        mc:Ignorable="d"
+        WindowStartupLocation="CenterScreen"
+        Title="GameSessionView" Height="550" Width="560"
+        Background="LightBlue">
+    <Grid>
+        <StackPanel>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height = "55"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width = "60"/>
+                    <ColumnDefinition Width = "*"/>
+                    <ColumnDefinition Width = "*"/>
+                    <ColumnDefinition Width = "60"/>
+                </Grid.ColumnDefinitions>
+                <Button
+                    Grid.Column="0"
+                    x:Name = "button_Help"
+                    Width = "45"
+                    Height = "45"
+                    Margin="0,5,0,0"
+                    Content="?"
+                    FontSize="30"
+                    FontWeight="Bold"
+                    Foreground="White"
+                    Background="CadetBlue"
+                    Click="button_Help_Click">
+                </Button>
+                <Button
+                    Grid.Column="3"
+                    x:Name = "button_Quit"
+                    Width = "45"
+                    Height = "45"
+                    Margin="0,5,0,0"
+                    Content="X"
+                    FontSize="30"
+                    FontWeight="Bold"
+                    Foreground="White"
+                    Background="Red"
+                    Click="button_Quit_Click">
+                </Button>
+                <StackPanel
+                    Grid.Column="1"
+                    Orientation="Horizontal">
+                    <Label
+                        Content="Item:"
+                        HorizontalAlignment="Left"
+                        VerticalAlignment="Center"
+                        FontSize="25"
+                        Padding="30,0,0,0">
+                    </Label>
+                    <Label
+                        x:Name="item"
+                        Content="NYI"
+                        HorizontalAlignment="Left"
+                        VerticalAlignment="Center"
+                        FontSize="25"
+                        Padding="20,0,0,0">
+                    </Label>
+                </StackPanel>
+                <StackPanel
+                    Grid.Column="2"
+                    Orientation="Horizontal">
+                    <Label
+                        Content="Location:"
+                        HorizontalAlignment="Left"
+                        VerticalAlignment="Center"
+                        FontSize="25"
+                        Padding="20,0,0,0">
+                    </Label>
+                    <Label
+                        x:Name="location_label"
+                        Content="{Binding CurrentLocation.Name}"
+                        HorizontalAlignment="Left"
+                        VerticalAlignment="Center"
+                        FontSize="15"
+                        Padding="10,5,0,0">
+                    </Label>
+                </StackPanel>
+            </Grid>
+
+            <StackPanel
+                Height="350">
+                <Label
+                    x:Name="Description"
+                    Content="{Binding CurrentLocation.Description}"
+                    Height="300"
+                    Background="White"
+                    BorderBrush="Black"
+                    BorderThickness="3"
+                    Margin="20,25,20,0">
+                </Label>
+            </StackPanel>
+
+            <StackPanel>
+                <Grid
+                    Margin="0,15,0,0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="65"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Button
+                        Grid.Column="0"
+                        Margin="10,0,10,0"
+                        x:Name="choiceA"
+                        FontSize="30"
+                        FontWeight="Bold"
+                        Foreground="White"
+                        Background="CadetBlue">
+                    </Button>
+                    <Button
+                        Grid.Column="1"
+                        Margin="10,0,10,0"
+                        x:Name="choiceB"
+                        FontSize="30"
+                        FontWeight="Bold"
+                        Foreground="White"
+                        Background="CadetBlue"
+                        Click="button_choiceB_Click">
+                    </Button>
+                </Grid>
+            </StackPanel>
+
+            <StackPanel
+                Width="200">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Label
+                        Grid.Column="0"
+                        Content="Name:"
+                        FontSize="12"
+                        FontWeight="Bold"
+                        HorizontalAlignment="Center">
+
+                    </Label>
+                    <Label
+                        Grid.Column="1"
+                        x:Name="name_label"
+                        Content="{Binding Player.Name}"
+                        FontSize="12"
+                        FontWeight="Bold"
+                        Width="100">
+                    </Label>
+                </Grid>
+            </StackPanel>
+        </StackPanel>
+    </Grid>
+</Window>
