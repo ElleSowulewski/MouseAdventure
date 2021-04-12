@@ -1,0 +1,240 @@
+﻿<Window x:Class="MouseAdventure.PresentationLayer.GameSessionView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:MouseAdventure.PresentationLayer"
+        mc:Ignorable="d"
+        WindowStartupLocation="CenterScreen"
+        Title="GameSessionView" Height="550" Width="560"
+        Background="LightBlue">
+    <Grid>
+        <StackPanel>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height = "55"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width = "60"/>
+                    <ColumnDefinition Width = "*"/>
+                    <ColumnDefinition Width = "*"/>
+                    <ColumnDefinition Width = "60"/>
+                </Grid.ColumnDefinitions>
+                <Button
+                    Grid.Column="0"
+                    x:Name = "button_Help"
+                    Width = "45"
+                    Height = "45"
+                    Margin="0,5,0,0"
+                    Content="?"
+                    FontSize="30"
+                    FontWeight="Bold"
+                    Foreground="White"
+                    Background="CadetBlue"
+                    Click="button_Help_Click">
+                </Button>
+                <Button
+                    Grid.Column="3"
+                    x:Name = "button_Quit"
+                    Width = "45"
+                    Height = "45"
+                    Margin="0,5,0,0"
+                    Content="X"
+                    FontSize="30"
+                    FontWeight="Bold"
+                    Foreground="White"
+                    Background="Red"
+                    Click="button_Quit_Click">
+                </Button>
+                <StackPanel
+                    Grid.Column="1"
+                    Orientation="Horizontal">
+                    <Label
+                        Content="Item:"
+                        HorizontalAlignment="Left"
+                        VerticalAlignment="Center"
+                        FontSize="25"
+                        Padding="30,0,0,0">
+                    </Label>
+                    <Label
+                        x:Name="item_label"
+                        Content="{Binding Player.Inventory[0].Name}"
+                        HorizontalAlignment="Left"
+                        VerticalAlignment="Center"
+                        FontSize="15"
+                        Padding="10,5,0,0"
+                        MouseDoubleClick="item_label_Click">
+                    </Label>
+                </StackPanel>
+                <StackPanel
+                    Grid.Column="2"
+                    Orientation="Horizontal">
+                    <Label
+                        Content="Location:"
+                        HorizontalAlignment="Left"
+                        VerticalAlignment="Center"
+                        FontSize="25"
+                        Padding="20,0,0,0">
+                    </Label>
+                    <Label
+                        x:Name="location_label"
+                        Content="{Binding CurrentLocation.Name}"
+                        HorizontalAlignment="Left"
+                        VerticalAlignment="Center"
+                        FontSize="15"
+                        Padding="10,5,0,0">
+                    </Label>
+                </StackPanel>
+            </Grid>
+
+            <StackPanel
+                Height="350">
+                <Label
+                    x:Name="CurrentDescription"                    
+                    Height="300"
+                    Background="White"
+                    BorderBrush="Black"
+                    BorderThickness="3"
+                    Margin="20,25,20,0"
+                    >
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="60"/>
+                            <RowDefinition Height="140"/>
+                            <RowDefinition Height="100"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="500"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <StackPanel>
+                            <Grid
+                                Grid.Row="0">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="50"/>
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="100"/>
+                                    <ColumnDefinition Width="100"/>
+                                    <ColumnDefinition Width="85"/>
+                                    <ColumnDefinition Width="100"/>
+                                    <ColumnDefinition Width="100"/>
+                                    <ColumnDefinition Width="100"/>
+                                </Grid.ColumnDefinitions>
+                                <Label
+                                    Grid.Column="0"
+                                    FontSize="15"
+                                    Content="{Binding CurrentLocation.GameItems[0].Name}"
+                                    VerticalAlignment="Center"
+                                    HorizontalAlignment="Center">
+                                </Label>
+                                <Button
+                                    x:Name="pick_Button"
+                                    Grid.Column="1"
+                                    Content="Pick Up"
+                                    Click="pick_Button_Click">
+                                </Button>
+                                <Label
+                                    Grid.Column = "2"
+                                    Content="Talk:"
+                                    VerticalAlignment="Center"
+                                    FontSize="15">
+                                </Label>
+                                <Button
+                                    x:Name="talk_Button_1"
+                                    Grid.Column="3"
+                                    Content="{Binding CurrentLocation.Npcs[0].Name}"
+                                    Click="button_talkA_Click">
+                                </Button>
+                                <Button
+                                    x:Name="talk_Button_2"
+                                    Grid.Column="4"
+                                    Content="{Binding CurrentLocation.Npcs[1].Name}"
+                                    Click="button_talkC_Click">
+                                </Button>
+                            </Grid>
+                            <Grid
+                                Margin="0,5"
+                                Background="Black">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="2"/>
+                                </Grid.RowDefinitions>
+                            </Grid>
+                        </StackPanel>
+                        <Label
+                            Grid.Row="2"
+                            x:Name ="Description"
+                            Content="{Binding CurrentLocationInformation}">
+                        </Label>
+                        <Label
+                            Grid.Row="1"
+                            x:Name ="Room_Description"
+                            Content="{Binding CurrentLocation.Description}">
+                        </Label>
+                    </Grid>
+                </Label>
+            </StackPanel>
+
+            <StackPanel>
+                <Grid
+                    Margin="0,15,0,0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="65"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Button
+                        Grid.Column="0"
+                        Margin="10,0,10,0"
+                        x:Name="choiceA"
+                        Content="{Binding CurrentLocation.A}"
+                        FontSize="20"
+                        FontWeight="Bold"
+                        Foreground="White"
+                        Background="CadetBlue"
+                        Click="button_choiceA_Click">
+                    </Button>
+                    <Button
+                        Grid.Column="1"
+                        Margin="10,0,10,0"
+                        x:Name="choiceB"
+                        Content="{Binding CurrentLocation.B}"
+                        FontSize="20"
+                        FontWeight="Bold"
+                        Foreground="White"
+                        Background="CadetBlue"
+                        Click="button_choiceB_Click">
+                    </Button>
+                </Grid>
+            </StackPanel>
+
+            <StackPanel
+                Width="200">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Label
+                        Grid.Column="0"
+                        Content="Name:"
+                        FontSize="12"
+                        FontWeight="Bold"
+                        HorizontalAlignment="Center" Height="26" Margin="26,0" VerticalAlignment="Top">
+
+                    </Label>
+                    <Label
+                        Grid.Column="1"
+                        x:Name="name_label"
+                        Content="{Binding Player.Name}"
+                        FontSize="12"
+                        FontWeight="Bold"
+                        Width="100">
+                    </Label>
+                </Grid>
+            </StackPanel>
+        </StackPanel>
+    </Grid>
+</Window>
